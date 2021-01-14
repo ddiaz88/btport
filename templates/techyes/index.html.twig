@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Techyes index{% endblock %}
+
+{% block body %}
+    <h1>Techyes index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Autor</th>
+                <th>Productora</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for techye in techyes %}
+            <tr>
+                <td>{{ techye.id }}</td>
+                <td>{{ techye.Nombre }}</td>
+                <td>{{ techye.Autor }}</td>
+                <td>{{ techye.productora }}</td>
+                <td>
+                    <a href="{{ path('techyes_show', {'id': techye.id}) }}">show</a>
+                    <a href="{{ path('techyes_edit', {'id': techye.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('techyes_new') }}">Create new</a>
+{% endblock %}

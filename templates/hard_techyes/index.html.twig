@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HardTechyes index{% endblock %}
+
+{% block body %}
+    <h1>HardTechyes index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Autor</th>
+                <th>Productora</th>
+                <th>Djs</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hard_techye in hard_techyes %}
+            <tr>
+                <td>{{ hard_techye.id }}</td>
+                <td>{{ hard_techye.Nombre }}</td>
+                <td>{{ hard_techye.Autor }}</td>
+                <td>{{ hard_techye.Productora }}</td>
+                <td>{{ hard_techye.Djs }}</td>
+                <td>
+                    <a href="{{ path('hard_techyes_show', {'id': hard_techye.id}) }}">show</a>
+                    <a href="{{ path('hard_techyes_edit', {'id': hard_techye.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('hard_techyes_new') }}">Create new</a>
+{% endblock %}
